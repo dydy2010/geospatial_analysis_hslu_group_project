@@ -1,13 +1,13 @@
 ---
-title: "Database Project Report"
-subtitle: "Traffic Flow Analysis for Urban Planning in Zurich | Team ACID"
+title: "Geospatial Data Analysis for Smart Communities"
+subtitle: "Urban Infrastructure Stress Analysis: Mapping Traffic Population Dynamics in Zurich (20212-2025)"
 author: |
-  Ramiro Díez-Liébana \textit{(ramiro.diezliebanaorejas@stud.hslu.ch)}  
-  Valeska Blank \textit{(valeska.blank@stud.hslu.ch)}  
-  Dongyuan Gao \textit{(gao.dongyuan2010@gmail.com)}  
-  Cyriel Van Helleputte \textit{(cyriel.vanhelleputte@stud.hslu.ch)}  
+  Mohammed Biya \textit{(mohammed.biya@stud.hslu.ch)}  
+  Omar Zeroual \textit{(@stud.hslu.ch)}  
+  Dongyuan Gao \textit{(@stud.hslu.ch)}  
+  Pun Sabin \textit{(@stud.hslu.ch)}  
   \vspace{0.3cm}  
-  \small GitHub: \url{https://github.com/dydy2010/dbm_project_ACID}
+  \small GitHub: \url{https://github.com/dydy2010/geospatial_analysis_hslu_group_project}
 date: "`r format(Sys.Date(), '%Y-%m-%d')`"
 output_file: "DBM_Project_Team_ACID.pdf"
 output:
