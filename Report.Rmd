@@ -9,7 +9,7 @@ author: |
   \vspace{0.3cm}  
   \small GitHub: \url{https://github.com/dydy2010/geospatial_analysis_hslu_group_project}
 date: "`r format(Sys.Date(), '%Y-%m-%d')`"
-output_file: "DBM_Project_Team_ACID.pdf"
+output_file: "GEO_Project.pdf"
 output:
   pdf_document:
     toc: true
@@ -18,10 +18,51 @@ output:
     extra_dependencies: ["float"]
 fontsize: 11pt
 geometry: margin=1in
-knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "DBM_Project_Team_ACID.pdf") })
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project.pdf") })
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 \newpage
+# Introduction & Context
+
+Zurich, Switzerland’s largest city and a major European economic hub, is experiencing sustained **urbanization pressure** that increasingly tests the capacity and resilience of its transport infrastructure. Between **2012 and 2025**, the city’s **population has continued to grow**, while the **road network has remained largely stable**. At the same time, **commuting patterns and mobility behaviors evolve**, concentrating demand on key **arterial roads** and **intersections**, especially during **peak hours**. This mismatch between growing demand and limited physical expansion contributes to **traffic congestion**, with downstream impacts on **travel time reliability**, **road safety**, **air quality**, and overall **network performance**.
+
+For urban planning authorities, managing these challenges requires more than reacting to isolated bottlenecks. Decisions about **where to prioritize infrastructure investments**, **how to optimize traffic signal strategies**, and **which districts may require redesign or alternative mobility solutions** depend on a clear, data-driven understanding of how traffic behaves over time and across space. In particular, planners need to identify not only where volumes are high, but where **growth trends**, **directional imbalances**, and **recurring peak-demand patterns** signal structural stress on the network.
+
+This project, *Urban Infrastructure Stress Analysis: Mapping Traffic Population Dynamics in Zurich (2012–2025)*, contributes to that goal by transforming raw traffic and population data into **actionable insights** for evidence-based urban planning. Using **geospatial data analytics**, the study links demographic dynamics with observed traffic volumes to highlight areas where infrastructure pressure is increasing most rapidly. A core contribution is the development of interpretable **key performance indicators (KPIs)**—including a district-level **Stress Index** that compares **population growth rates** to **traffic volume growth rates**—to support prioritization and long-term planning.
+
+Beyond the stress index, the project examines **temporal traffic patterns** at multiple scales (**hourly, daily, and seasonal**) to detect peak demand periods and usage trends, and applies **clustering methods** to group counting sites by traffic profiles, revealing different “mobility zone” types across Zurich. Finally, results are communicated through **interactive geospatial visualizations and dashboards**, designed to help stakeholders explore patterns quickly and support planning discussions.
+
+Overall, the work aims to bridge the gap between complex datasets and real planning needs: turning measurements into a coherent picture of **where**, **when**, and **how** Zurich’s transport infrastructure is under growing stress—while also serving as a practical learning application of geospatial and analytical methods.
+
+# Data sources
+
+We use three datasets, all retrieved from the Zurich Open Data Portal (Open Data Zürich).
+
+Motorized individual traffic (MIV) counts — hourly values (2012–2025)
+Dataset provides hourly traffic measurements at multiple counting sites across the City of Zurich, available since 2012 (delivered daily, with hourly values per counting site).
+
+Source: https://data.stadt-zuerich.ch/dataset/sid_dav_verkehrszaehlung_miv_od2031
+
+Population statistics by quarter — monthly stock with demographic attributes
+Dataset provides population counts at the quarter (Stadtquartier) level, broken down by demographic dimensions (e.g., sex, age group, origin), enabling fine-grained spatial comparisons and trend analysis.
+
+Source: https://data.stadt-zuerich.ch/dataset/bev_monat_bestand_quartier_geschl_ag_herkunft_od3250
+
+Administrative boundaries (districts & quarters) — shapefiles / geodata
+Geospatial boundary dataset defining the official layout of Zurich’s districts (Kreise) and statistical quarters, used for spatial joins, aggregation, and mapping.
+
+Source: https://data.stadt-zuerich.ch/dataset/ktzh_stadtkreise_und_quartiere_zuerich_und_winterthur__ogd_
+
+# Tools & Technologies
+We intent to employ a Python-based geospatial analysis workflow for the project:
+
+Data Processing: pandas for tabular data manipulation; GeoPandas for spatial operations and coordinate system transformations (Swiss LV95 to WGS84)
+
+Analysis: scikit-learn for clustering algorithms; NumPy and SciPy for statistical computations
+
+Visualization: Tableau, Plotly or Streamlit for interactive dashboards; Folium for web-based mapping; Matplotlib/Seaborn for static visualizations
+
+Geospatial Data: Zurich district and quarter boundary files (GeoJSON format) from opendata.swiss
