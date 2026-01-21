@@ -71,7 +71,54 @@ Geospatial Data: Zurich district and quarter boundary files (GeoJSON format) fro
 
 # Data cleaning (sabin)
 
-# EDA (mohammed)
+# Data Preparation & Cleaning
+
+## 2.1 Traffic Data
+
+The raw traffic dataset was approximately 3.74 GB with over 20 million records. 
+* **Filtering**: We kept essential columns: `measurement_site_id`, coordinates, `timestamp`, and `vehicle_count`.
+* **Cleaning**: Removed 1,369,306 rows with missing values and eliminated duplicate records.
+* **CRS Transformation**: Converted Swiss LV95 coordinates (EPSG:2056) to WGS84 (latitude/longitude) for mapping compatibility.
+
+## 2.2 Population Data
+
+The population data originally contained demographic slices by age, sex, and origin. 
+* **Aggregation**: These slices were summed to determine the **true total population** per quarter and year.
+* **Snapshotting**: Only January snapshots were used to ensure consistent annual comparisons.
+
+## 2.3 Geospatial Mapping
+Using Zurich's statistical quarter boundaries, we performed a **spatial join**. This assigned 219 unique traffic measurement sites to their respective quarters using a "within" geometric predicate.
+
+---
+
+## 2.3 Methodology: Computing the Stress Index
+
+The core metric of this analysis is the Stress Index, which quantifies the pressure on urban infrastructure.
+
+### 2.3.1 The Formula
+The Stress Index is defined as the difference between the percentage growth of traffic and the percentage growth of the resident population:
+
+$$\text{Stress Index} = \text{Traffic Growth (\%)} - \text{Population Growth (\%)}$$
+
+### 2.3.1 Classification Logic
+Quarters are categorized based on their index values:
+
+| Category | Stress Index Value | Interpretation |
+| :--- | :--- | :--- |
+| **Commuter Hub** | $> +5\%$ | Traffic grows faster than residents; high external inflow. |
+| **Balanced** | $-5\%$ to $+5\%$ | Mobility and population growth are synchronized. |
+| **Residential Zone** | $< -5\%$ | Population outpaces traffic; likely local/quiet zones. |
+
+---
+
+The exported dataset (`stress_index_tableau_with_classes.csv`) is optimized for visualization with the following fields:
+
+* **quarter**: Name of the Zurich statistical quarter.
+* **year**: Calendar year of the observation.
+* **total_traffic**: Aggregated annual vehicle count.
+* **total_population**: Total residents in the quarter.
+* **stress_index**: The calculated mobility pressure value.
+* **category**: The hub/residential/balanced classification.
 
 # results (Omar)
 
