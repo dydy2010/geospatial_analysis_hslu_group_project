@@ -25,6 +25,7 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 knitr::opts_chunk$set(echo = FALSE)
 ```
 \newpage
+
 # Introduction & Context
 
 Zurich, Switzerland’s largest city and a major European economic hub, is experiencing sustained **urbanization pressure** that increasingly tests the capacity and resilience of its transport infrastructure. Between **2012 and 2025**, the city’s **population has continued to grow**, while the **road network has remained largely stable**. At the same time, **commuting patterns and mobility behaviors evolve**, concentrating demand on key **arterial roads** and **intersections**, especially during **peak hours**. This mismatch between growing demand and limited physical expansion contributes to **traffic congestion**, with downstream impacts on **travel time reliability**, **road safety**, **air quality**, and overall **network performance**.
@@ -57,6 +58,7 @@ Geospatial boundary dataset defining the official layout of Zurich’s districts
 Source: https://data.stadt-zuerich.ch/dataset/ktzh_stadtkreise_und_quartiere_zuerich_und_winterthur__ogd_
 
 # Tools & Technologies
+
 We intent to employ a Python-based geospatial analysis workflow for the project:
 
 Data Processing: pandas for tabular data manipulation; GeoPandas for spatial operations and coordinate system transformations (Swiss LV95 to WGS84)
@@ -66,3 +68,13 @@ Analysis: scikit-learn for clustering algorithms; NumPy and SciPy for statistica
 Visualization: Tableau, Plotly or Streamlit for interactive dashboards; Folium for web-based mapping; Matplotlib/Seaborn for static visualizations
 
 Geospatial Data: Zurich district and quarter boundary files (GeoJSON format) from opendata.swiss
+
+# Data cleaning (sabin)
+
+# EDA (mohammed)
+
+# results (Omar)
+
+# conclusion (mohammed)
+
+# Appendix 
