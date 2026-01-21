@@ -69,7 +69,6 @@ Visualization: Tableau, Plotly or Streamlit for interactive dashboards; Folium f
 
 Geospatial Data: Zurich district and quarter boundary files (GeoJSON format) from opendata.swiss
 
-# Data cleaning (sabin)
 
 # Data Preparation & Cleaning
 
