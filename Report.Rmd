@@ -324,6 +324,18 @@ The temporal patterns show dramatic swings, including major spikes in 2016 (+53.
 The extreme volatility in certain districts—particularly Oerlikon with individual years showing over 1300% growth—suggests either significant infrastructure changes, measurement methodology shifts, or data quality issues that warrant careful validation before drawing definitive policy conclusions.
 
 ![Traffic Growth 2013](images/traffic_growth/traffic_growth_2013.png)
+![Traffic Growth 2014](images/traffic_growth/traffic_growth_2014.png)
+![Traffic Growth 2015](images/traffic_growth/traffic_growth_2015.png)
+![Traffic Growth 2016](images/traffic_growth/traffic_growth_2016.png)
+![Traffic Growth 2017](images/traffic_growth/traffic_growth_2017.png)
+![Traffic Growth 2018](images/traffic_growth/traffic_growth_2018.png)
+![Traffic Growth 2019](images/traffic_growth/traffic_growth_2019.png)
+![Traffic Growth 2020](images/traffic_growth/traffic_growth_2020.png)
+![Traffic Growth 2021](images/traffic_growth/traffic_growth_2021.png)
+![Traffic Growth 2022](images/traffic_growth/traffic_growth_2022.png)
+![Traffic Growth 2023](images/traffic_growth/traffic_growth_2023.png)
+![Traffic Growth 2024](images/traffic_growth/traffic_growth_2024png)
+![Traffic Growth 2025](images/traffic_growth/traffic_growth_2025.png)
 
 ## Population Growth
 
