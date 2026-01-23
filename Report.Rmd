@@ -315,7 +315,19 @@ This dataset is optimized for downstream visualization and analysis in **Tableau
 - The Stress Index is intended as an **exploratory indicator** rather than a causal measure
 
 
-# results (Omar)
+# Results (Omar)
+
+## Traffic Growth
+
+The traffic growth patterns across Zurich's 30 districts from 2012 to 2025 reveal a highly volatile and uneven landscape characterized by extreme fluctuations and significant geographic variation. Overall, traffic volumes experienced an average annual growth rate of 7.25%, though this figure masks substantial volatility (standard deviation of 79.86%) and a concerning reality: more than half of all year-over-year measurements (54.7%) actually showed traffic declines, with a median growth rate of -0.79%.
+The temporal patterns show dramatic swings, including major spikes in 2016 (+53.90%), 2018 (+24.41%), and 2024 (+29.07%), followed by sharp corrections in 2017 (-8.70%), 2020 (-7.02% during COVID-19), and 2025 (-6.64%). Geographically, districts exhibit wildly different trajectories: peripheral and developing areas like Oerlikon (+139.87% average), Saatlen (+35.25%), and Albisrieden (+24.45%) experienced explosive traffic growth driven by infrastructure expansions and urban development, while central, established districts such as Werd (-2.59%), City (-2.26%), and Hochschulen (-1.90%) showed modest but consistent traffic declines, likely reflecting shifts toward public transportation, pedestrianization efforts, and changing urban mobility patterns.
+The extreme volatility in certain districts—particularly Oerlikon with individual years showing over 1300% growth—suggests either significant infrastructure changes, measurement methodology shifts, or data quality issues that warrant careful validation before drawing definitive policy conclusions.
+
+
+
+## Population Growth
+
+## Stress Index
 
 # conclusion (mohammed)
 
