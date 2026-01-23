@@ -320,7 +320,9 @@ This dataset is optimized for downstream visualization and analysis in **Tableau
 ## Traffic Growth
 
 The traffic growth patterns across Zurich's 30 districts from 2012 to 2025 reveal a highly volatile and uneven landscape characterized by extreme fluctuations and significant geographic variation. Overall, traffic volumes experienced an average annual growth rate of 7.25%, though this figure masks substantial volatility (standard deviation of 79.86%) and a concerning reality: more than half of all year-over-year measurements (54.7%) actually showed traffic declines, with a median growth rate of -0.79%.
+
 The temporal patterns show dramatic swings, including major spikes in 2016 (+53.90%), 2018 (+24.41%), and 2024 (+29.07%), followed by sharp corrections in 2017 (-8.70%), 2020 (-7.02% during COVID-19), and 2025 (-6.64%). Geographically, districts exhibit wildly different trajectories: peripheral and developing areas like Oerlikon (+139.87% average), Saatlen (+35.25%), and Albisrieden (+24.45%) experienced explosive traffic growth driven by infrastructure expansions and urban development, while central, established districts such as Werd (-2.59%), City (-2.26%), and Hochschulen (-1.90%) showed modest but consistent traffic declines, likely reflecting shifts toward public transportation, pedestrianization efforts, and changing urban mobility patterns.
+
 The extreme volatility in certain districts—particularly Oerlikon with individual years showing over 1300% growth—suggests either significant infrastructure changes, measurement methodology shifts, or data quality issues that warrant careful validation before drawing definitive policy conclusions.
 
 ![Traffic Growth 2013](images/traffic_growth/traffic_growth_2013.png)
@@ -340,6 +342,30 @@ The extreme volatility in certain districts—particularly Oerlikon with individ
 ## Population Growth
 
 ## Stress Index
+
+The stress index, measuring the differential between traffic growth and population growth across Zurich's districts from 2012 to 2025, reveals a transportation system under significant and growing strain, with a concerning pattern of episodic crises punctuating an otherwise manageable baseline, though data limitations constrain the analysis with 7.2% of district-year observations lacking stress calculations due to missing baseline data (primarily the 2012 starting year where no prior year exists for comparison) and isolated instances of missing traffic data (notably Friesenberg 2017 with zero recorded traffic, and Oerlikon 2015 and Albisrieden 2014 with incomplete measurements).
+
+While the median stress index of -2.14% suggests that in typical district-years, population growth slightly outpaces traffic growth—indicating relative improvement in per-capita congestion—the mean of +6.15% and extreme standard deviation of 79.93% expose a reality dominated by severe outlier events that dramatically elevate average stress levels.
+
+The temporal pattern shows three major crisis periods: 2016 (average stress +52.17%), 2018 (+22.99%), and most recently 2024 (+28.33%), driven by explosive traffic growth in specific districts that overwhelmed incremental population increases, while 2020 (-8.23%) and 2017 (-10.17%) provided temporary relief through COVID-19 disruption and traffic management interventions respectively.
+
+Geographically, stress concentrates in a handful of transformation zones—Oerlikon (+138.95% average), Saatlen (+33.56%), Albisrieden (+22.37%), and Langstrasse (+13.99%)—where rapid infrastructure development, new road connections, or shifts in traffic routing created explosive growth that far exceeded population absorption capacity, with these districts experiencing multiple years of severe stress (>10%) despite otherwise stable demographic patterns. Conversely, central established districts like Escher Wyss (-5.79%), Wollishofen (-3.67%), and City (-2.35%) have achieved chronic improvement through sustained traffic reduction policies, pedestrianization, and public transport prioritization that outpaced their minimal population changes.
+
+The distribution analysis reveals that 59.4% of district-years show negative stress (traffic growing slower than population), but the 40.6% showing positive stress includes a dangerous 13.6% with moderate-to-severe stress levels (>10%), and these crisis events disproportionately drive policy concerns, suggesting that Zurich's transportation challenge is not uniform congestion but rather managing extreme volatility and preventing catastrophic stress spikes in vulnerable districts undergoing rapid transformation.
+
+![Stress Index 2013](images/stress_index/stress_index_2013.png)
+![Stress Index 2014](images/stress_index/stress_index_2014.png)
+![Stress Index 2015](images/stress_index/stress_index_2015.png)
+![Stress Index 2016](images/stress_index/stress_index_2016.png)
+![Stress Index 2017](images/stress_index/stress_index_2017.png)
+![Stress Index 2018](images/stress_index/stress_index_2018.png)
+![Stress Index 2019](images/stress_index/stress_index_2019.png)
+![Stress Index 2020](images/stress_index/stress_index_2020.png)
+![Stress Index 2021](images/stress_index/stress_index_2021.png)
+![Stress Index 2022](images/stress_index/stress_index_2022.png)
+![Stress Index 2023](images/stress_index/stress_index_2023.png)
+![Stress Index 2024](images/stress_index/stress_index_2024png)
+![Stress Index 2025](images/stress_index/stress_index_2025.png)
 
 # conclusion (mohammed)
 
