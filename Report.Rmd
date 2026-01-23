@@ -341,6 +341,28 @@ The extreme volatility in certain districts—particularly Oerlikon with individ
 
 ## Population Growth
 
+Population growth across Zurich's districts from 2012 to 2025 demonstrates a fundamentally different pattern than traffic growth—one characterized by steady, sustainable expansion with far lower volatility and more uniform geographic distribution. The city experienced consistent demographic growth with an average annual rate of 1.10% (median 0.88%), substantially more stable than traffic patterns as evidenced by the low standard deviation of 2.39%, and with the vast majority of district-year observations (71.7%) showing population increases.
+
+Over the 13-year period, Zurich's total population grew from 307,083 to 401,617 residents, representing a cumulative 30.8% increase, with particularly strong growth in the 2014-2015 period when the city added over 50,000 residents through urban development and migration. Annual growth rates remained relatively stable between 1.10% and 2.11% from 2013 to 2020, before moderating to 0.37%-1.59% in recent years and turning slightly negative in 2025 (-0.15%), possibly reflecting affordability pressures or pandemic-related demographic shifts.
+
+Geographically, population growth concentrated in developing peripheral and waterfront districts like Escher Wyss (+5.43% average, experiencing dramatic transformation), Wollishofen (+2.45%), and Albisrieden (+2.08%), while established central districts such as City (+0.09%), Hochschulen (+0.15%), and Rathaus (+0.28%) showed minimal population change, suggesting these mature urban cores have reached build-out capacity while growth occurs in areas with available land for residential development. 
+
+Unlike the extreme district-level volatility in traffic patterns, population changes remained relatively predictable and policy-responsive, with the most volatile district (Escher Wyss) still showing a standard deviation of only 7.37%—far more manageable than the traffic volatility observed in comparable districts—indicating that urban planners have successfully managed demographic growth even as transportation infrastructure has struggled to keep pace.
+
+![Population Growth 2013](images/population_growth/population_growth_2013.png)
+![Population Growth 2014](images/population_growth/population_growth_2014.png)
+![Population Growth 2015](images/population_growth/population_growth_2015.png)
+![Population Growth 2016](images/population_growth/population_growth_2016.png)
+![Population Growth 2017](images/population_growth/population_growth_2017.png)
+![Population Growth 2018](images/population_growth/population_growth_2018.png)
+![Population Growth 2019](images/population_growth/population_growth_2019.png)
+![Population Growth 2020](images/population_growth/population_growth_2020.png)
+![Population Growth 2021](images/population_growth/population_growth_2021.png)
+![Population Growth 2022](images/population_growth/population_growth_2022.png)
+![Population Growth 2023](images/population_growth/population_growth_2023.png)
+![Population Growth 2024](images/population_growth/population_growth_2024png)
+![Population Growth 2025](images/population_growth/population_growth_2025.png)
+
 ## Stress Index
 
 The stress index, measuring the differential between traffic growth and population growth across Zurich's districts from 2012 to 2025, reveals a transportation system under significant and growing strain, with a concerning pattern of episodic crises punctuating an otherwise manageable baseline, though data limitations constrain the analysis with 7.2% of district-year observations lacking stress calculations due to missing baseline data (primarily the 2012 starting year where no prior year exists for comparison) and isolated instances of missing traffic data (notably Friesenberg 2017 with zero recorded traffic, and Oerlikon 2015 and Albisrieden 2014 with incomplete measurements).
