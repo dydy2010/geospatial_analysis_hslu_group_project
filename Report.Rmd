@@ -69,6 +69,92 @@ Visualization: Tableau, Plotly or Streamlit for interactive dashboards; Folium f
 
 Geospatial Data: Zurich district and quarter boundary files (GeoJSON format) from opendata.swiss
 
+# Dataset & Preprocessing
+
+**Data Overview**
+- Hourly **traffic count** data, **address** data (including city district and quarter) and **population** data from the City of Zurich’s open data portal was collected.
+- The raw datasets consisted of **multiple CSV files** (**2012–2025**).
+
+## Raw Dataset: Traffic Data
+
+| Field Group | Columns |
+|-------------|---------|
+| Identifiers & geometry | MSID, MSName, ZSID, ZSName, Achse, HNr, Hoehe, EKoord, NKoord, Richtung |
+| Site metadata | Knummer, Kname, AnzDetektoren, D1ID–D4ID |
+| Measurement facts | MessungDatZeit, LieferDat, AnzFahrzeuge, AnzFahrzeugeStatus |
+
+Because the raw dataset included a mixture of analytical attributes and highly technical metadata, each field was systematically examined and filtered using Python and the pandas library to assess its relevance for traffic-flow analysis.
+
+### Removed Fields
+
+- **HNr**, due to inconsistent content.
+- **D1ID–D4ID**, as these detector identifiers are technical metadata without analytical value.
+- **LieferDat**, which is a delivery timestamp not required for traffic analysis.
+
+All fields describing the **measurement location**, the **measurement configuration**, and the **traffic counts** themselves were retained. To improve clarity and support further processing and database integration, the remaining column names were **translated into English equivalents**. In a further preprocessing step, several **categorical values** contained in German were **translated to English**. After all preprocessing steps were completed, the resulting cleaned dataset contained **21,721,493 rows** and **14 columns**.
+
+### Cleaned Traffic Dataset Columns
+
+- **measurement_site_id**: Unique technical identifier of the measurement site. A measurement site represents a specific traffic-flow direction or lane at a counting location.
+- **measurement_site_name**: Technical name of the measurement site. In this dataset, this field contains "Unknown" for all entries.
+- **counting_site_id**: Identifier of the counting site, representing the physical location where traffic measurements are collected.
+- **counting_site_name**: Human-readable name of the counting site, describing the location.
+- **axis**: Categorization of the counting site into a traffic axis (street).
+- **position_description**: A textual descriptor indicating where along the street segment the measurement site is located. Contains "Unknown" for many entries.
+- **east_coordinate**: The east coordinate of the measurement site in the Swiss CH1903+ / LV95 reference system.
+- **north_coordinate**: The north coordinate of the measurement site in the Swiss CH1903+ / LV95 reference system.
+- **direction**: The direction of traffic flow being measured (e.g., "inbound", "outbound").
+- **signal_id**: Identifier of the associated traffic signal or intersection controller regulating traffic at the measurement site.
+- **signal_name**: Name of the associated traffic signal or intersection.
+- **num_detectors**: Number of detectors installed at the measurement site.
+- **timestamp**: The timestamp indicating the start of the hourly measurement interval (ISO-8601 format).
+- **vehicle_count**: The number of vehicles recorded during the hourly measurement interval.
+- **vehicle_count_status**: Indicates how the vehicle count was produced: "Measured", "Missing", or "Imputed".
+
+## Raw Dataset: Quarters
+
+The raw quarter dataset contained **address-level information** used by the City of Zurich for **administrative** and **statistical purposes**. The fields included:
+
+| Field Group | Columns |
+|-------------|---------|
+| Identifiers | gwr_egid, objectid |
+| Administrative units | stadtkreis, statistisches_quartier |
+| Location metadata | adresse, hausnummer, lokalisationsname |
+| Area metrics | flaeche_real, flaeche_projektiert, flaeche_total |
+| Spatial coverage counts | anzahl_fla_real, anzahl_fla_projektiert |
+
+### Cleaning and Transformation
+
+To link **traffic data** with **geographic units**, the raw fields required several preprocessing steps:
+
+- **Address splitting and cleaning**: Street names and house numbers were embedded in a single free-text field (e.g., `"Heinrich-Federer-Strasse 12A"`, `"Widmerstrasse 88"`, `"Seeblickstrasse 17d"`). Using regular expressions, house numbers (including suffixes such as `12b`, `17d`) were removed, leaving a clean street-level identifier.
+
+- **Data-type normalisation**: `statistical_quarter` was normalised as a trimmed string. Inconsistent labels such as `"Schwamend.-Mitte"` were harmonised to `"Schwamendingen-Mitte"` to ensure joinability with the population dataset.
+  
+### Additional Standardisation for Street Name Matching
+
+To ensure that traffic measurement locations could be linked reliably to the quarter dataset, several street names from the traffic dataset required manual standardisation. While most addresses were harmonised through regex-based cleaning, a small number of street names contained compound forms that could not be resolved automatically (e.g., combined street names, hyphenated patterns, or slash-separated names). These were corrected manually to create a consistent set of street identifiers.
+
+Examples of manual mappings include:
+
+- `Sood-/Leimbachstrasse` → `Soodstrasse`
+- `Tobelhof-/Dreiwiesenstrasse` → `Tobelhofstrasse`
+- `Manessestrasse - Schimmelstrasse` → `Manessestrasse`
+- `Angererstrasse Tunnelstrasse` → `Angererstrasse`
+
+Additionally, several counting site names referred to non-street features such as bridges, tunnels or motorway segments (e.g., `Quaibrücke, Milchbucktunnel, A1L`). For these cases, the closest corresponding street-level name from the quarter dataset was identified manually.
+
+These manual adjustments were essential to achieve a **fully joinable** set of street names between the **traffic** and **quarter** datasets and ensured that **all counting sites** could be assigned to a **statistical quarter**.
+
+### Cleaned Quarter Dataset Columns
+
+- **address**: Original full address as provided in the raw data.
+- **house_number**: Extracted house number component (kept for completeness).
+- **street_name**: Cleaned and standardised street name used as the spatial key.
+- **city_district**: Official Zurich district number (1–12).
+- **statistical_quarter**: Statistical quarter (“Statistisches Quartier”) providing fine-grained spatial units.
+
+The cleaned quarter dataset provides the **geographic reference layer** used to integrate **traffic measurements** with **demographic information**.
 
 # Data Preparation & Cleaning
 
