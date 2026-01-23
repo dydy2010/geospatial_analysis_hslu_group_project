@@ -22,7 +22,7 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE)https://github.com/dydy2010/geospatial_analysis_hslu_group_project.git
 ```
 \newpage
 
@@ -160,50 +160,160 @@ The cleaned quarter dataset provides the **geographic reference layer** used to 
 
 ## 2.1 Traffic Data
 
-The raw traffic dataset was approximately 3.74 GB with over 20 million records. 
-* **Filtering**: We kept essential columns: `measurement_site_id`, coordinates, `timestamp`, and `vehicle_count`.
-* **Cleaning**: Removed 1,369,306 rows with missing values and eliminated duplicate records.
-* **CRS Transformation**: Converted Swiss LV95 coordinates (EPSG:2056) to WGS84 (latitude/longitude) for mapping compatibility.
+## 2. Data Processing and Methodology
 
-## 2.2 Population Data
-
-The population data originally contained demographic slices by age, sex, and origin. 
-* **Aggregation**: These slices were summed to determine the **true total population** per quarter and year.
-* **Snapshotting**: Only January snapshots were used to ensure consistent annual comparisons.
-
-## 2.3 Geospatial Mapping
-Using Zurich's statistical quarter boundaries, we performed a **spatial join**. This assigned 219 unique traffic measurement sites to their respective quarters using a "within" geometric predicate.
+This section describes the data processing pipeline and analytical methodology used to construct the Stress Index, which captures the relationship between population growth and traffic dynamics across Zurich’s statistical quarters.
 
 ---
 
-## 2.3 Methodology: Computing the Stress Index
+### 2.1 Traffic Data Processing
 
-The core metric of this analysis is the Stress Index, which quantifies the pressure on urban infrastructure.
+The raw traffic dataset provided by the City of Zurich consisted of approximately **3.7 GB** of data with over **20 million hourly observations** from permanent traffic counting stations.
 
-### 2.3.1 The Formula
-The Stress Index is defined as the difference between the percentage growth of traffic and the percentage growth of the resident population:
+#### 2.1.1 Data Reduction and Cleaning
 
-$$\text{Stress Index} = \text{Traffic Growth (\%)} - \text{Population Growth (\%)}$$
+To ensure computational feasibility and analytical relevance, the following preprocessing steps were applied:
 
-### 2.3.1 Classification Logic
-Quarters are categorized based on their index values:
+- **Column filtering**: Only essential variables were retained, including
+  `measurement_site_id`, Swiss LV95 coordinates (east, north), `timestamp`, and `vehicle_count`.
+- **Missing values**: Rows containing missing or invalid entries were removed.
+- **Duplicate removal**: Duplicate observations were identified and dropped to avoid double counting.
 
-| Category | Stress Index Value | Interpretation |
-| :--- | :--- | :--- |
-| **Commuter Hub** | $> +5\%$ | Traffic grows faster than residents; high external inflow. |
-| **Balanced** | $-5\%$ to $+5\%$ | Mobility and population growth are synchronized. |
-| **Residential Zone** | $< -5\%$ | Population outpaces traffic; likely local/quiet zones. |
+#### 2.1.2 Coordinate Reference System Transformation
+
+Traffic measurement sites were originally recorded in the Swiss coordinate system **LV95 (EPSG:2056)**.
+For compatibility with spatial analysis and visualization tools, coordinates were transformed to **WGS84 (latitude/longitude)**.
 
 ---
 
-The exported dataset (`stress_index_tableau_with_classes.csv`) is optimized for visualization with the following fields:
+### 2.2 Population Data Processing
 
-* **quarter**: Name of the Zurich statistical quarter.
-* **year**: Calendar year of the observation.
-* **total_traffic**: Aggregated annual vehicle count.
-* **total_population**: Total residents in the quarter.
-* **stress_index**: The calculated mobility pressure value.
-* **category**: The hub/residential/balanced classification.
+The population dataset contained demographic breakdowns by age group, sex, and nationality at the quarter level.
+
+#### 2.2.1 Aggregation
+
+To derive the total resident population per quarter and year:
+
+- All demographic subgroups were **summed** to compute the **total population**
+- Aggregation was performed for each **statistical quarter × year** combination
+
+#### 2.2.2 Annual Snapshot Selection
+
+To ensure temporal consistency and avoid intra-year duplication:
+
+- Only **January population snapshots** were retained
+- This provides a stable annual population reference aligned with year-over-year growth calculations
+
+---
+
+### 2.3 Geospatial Mapping of Traffic Sites to Quarters
+
+To link traffic measurements to administrative units, a spatial join was performed using Zurich’s statistical quarter boundaries.
+
+- **Spatial predicate**: `within`
+- **Input geometries**:
+  - Point geometries for traffic measurement sites
+  - Polygon geometries for statistical quarters
+- **Outcome**:
+  - **219 unique traffic measurement sites** were assigned to quarters
+  - Each traffic observation inherits a corresponding `quarter` and `quarter_id`
+
+This step enables aggregation of traffic counts at the quarter level.
+
+---
+
+### 2.4 Construction of the Stress Index
+
+#### 2.4.1 Temporal Aggregation
+
+- **Traffic data**: Hourly vehicle counts were aggregated to **annual totals per quarter**
+- **Population data**: Annual totals were already defined via January snapshots
+
+The analysis focuses on the period **2012–2025**, corresponding to the availability of traffic sensor data.
+
+---
+
+#### 2.4.2 Growth Rate Computation
+
+For each quarter, year-over-year percentage growth rates were computed.
+
+**Population growth** is defined as:
+
+$$
+\text{Population Growth}_{t} =
+\frac{P_{t} - P_{t-1}}{P_{t-1}} \times 100
+$$
+
+**Traffic growth** is defined as:
+
+$$
+\text{Traffic Growth}_{t} =
+\frac{T_{t} - T_{t-1}}{T_{t-1}} \times 100
+$$
+
+where
+$P_{t}$ denotes the total population in year $t$, and
+$T_{t}$ denotes the total traffic volume in year $t$.
+
+Growth rates are undefined for the **first observed year** of each quarter due to the absence of a prior baseline.
+
+---
+
+#### 2.4.3 Stress Index Definition
+
+The **Stress Index** measures the imbalance between mobility demand and residential growth and is defined as:
+
+$$
+\text{Stress Index} =
+\text{Traffic Growth (\%)} -
+\text{Population Growth (\%)}
+$$
+
+- Positive values indicate traffic growth exceeding population growth
+- Negative values indicate population growth exceeding traffic growth
+
+---
+
+### 2.5 Classification of Quarters
+
+Based on the Stress Index, quarters were categorized to support interpretation:
+
+| Category | Condition | Interpretation |
+|--------|----------|----------------|
+| **Commuter Hub** | Stress Index $> +5$ | Strong external inflow of traffic |
+| **Balanced** | $-5 \leq$ Stress Index $\leq +5$ | Traffic and population grow in balance |
+| **Residential Zone** | Stress Index $< -5$ | Population growth dominates traffic |
+
+---
+
+### 2.6 Final Dataset
+
+The final analytical dataset is exported as:
+
+**`stress_index_tableau_with_classes.csv`**
+
+It contains one observation per **quarter × year**, with the following key variables:
+
+- `quarter`
+- `quarter_id`
+- `year`
+- `total_population`
+- `population_growth_pct`
+- `total_traffic`
+- `traffic_growth_pct`
+- `stress_index`
+- `category`
+
+This dataset is optimized for downstream visualization and analysis in **Tableau**.
+
+---
+
+### 2.7 Methodological Considerations
+
+- Extreme growth values (e.g. −100% or large positive rates) can occur when traffic volumes drop sharply or recover from low baselines
+- Such values reflect real-world volatility (e.g. construction, sensor outages, exceptional events) and are retained as part of the analysis
+- The Stress Index is intended as an **exploratory indicator** rather than a causal measure
+
 
 # results (Omar)
 
