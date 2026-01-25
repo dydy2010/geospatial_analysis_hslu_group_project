@@ -3,7 +3,7 @@ title: "Geospatial Data Analysis for Smart Communities"
 subtitle: "Urban Infrastructure Stress Analysis: Mapping Traffic Population Dynamics in Zurich (20212-2025)"
 author: |
   Mohammed Biya \textit{(mohammed.biya@stud.hslu.ch)}  
-  Omar Zeroual \textit{(@stud.hslu.ch)}  
+  Omar Zeroual \textit{(omar.zeroual@stud.hslu.ch)}  
   Dongyuan Gao \textit{(@stud.hslu.ch)}  
   Pun Sabin \textit{(@stud.hslu.ch)}  
   \vspace{0.3cm}  
@@ -16,13 +16,15 @@ output:
     toc_depth: 2
     number_sections: true
     extra_dependencies: ["float"]
+    latex_engine: xelatex
 fontsize: 11pt
 geometry: margin=1in
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project.pdf") })
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)https://github.com/dydy2010/geospatial_analysis_hslu_group_project.git
+knitr::opts_chunk$set(echo = FALSE)
+#https://github.com/dydy2010/geospatial_analysis_hslu_group_project.git
 ```
 \newpage
 
@@ -336,7 +338,7 @@ The extreme volatility in certain districts—particularly Oerlikon with individ
 ![Traffic Growth 2021](images/traffic_growth/traffic_growth_2021.png)
 ![Traffic Growth 2022](images/traffic_growth/traffic_growth_2022.png)
 ![Traffic Growth 2023](images/traffic_growth/traffic_growth_2023.png)
-![Traffic Growth 2024](images/traffic_growth/traffic_growth_2024png)
+![Traffic Growth 2024](images/traffic_growth/traffic_growth_2024.png)
 ![Traffic Growth 2025](images/traffic_growth/traffic_growth_2025.png)
 
 ## Population Growth
@@ -360,7 +362,7 @@ Unlike the extreme district-level volatility in traffic patterns, population cha
 ![Population Growth 2021](images/population_growth/population_growth_2021.png)
 ![Population Growth 2022](images/population_growth/population_growth_2022.png)
 ![Population Growth 2023](images/population_growth/population_growth_2023.png)
-![Population Growth 2024](images/population_growth/population_growth_2024png)
+![Population Growth 2024](images/population_growth/population_growth_2024.png)
 ![Population Growth 2025](images/population_growth/population_growth_2025.png)
 
 ## Stress Index
@@ -386,7 +388,7 @@ The distribution analysis reveals that 59.4% of district-years show negative str
 ![Stress Index 2021](images/stress_index/stress_index_2021.png)
 ![Stress Index 2022](images/stress_index/stress_index_2022.png)
 ![Stress Index 2023](images/stress_index/stress_index_2023.png)
-![Stress Index 2024](images/stress_index/stress_index_2024png)
+![Stress Index 2024](images/stress_index/stress_index_2024.png)
 ![Stress Index 2025](images/stress_index/stress_index_2025.png)
 
 # conclusion (mohammed)
