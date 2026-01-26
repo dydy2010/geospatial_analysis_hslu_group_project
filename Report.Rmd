@@ -15,7 +15,7 @@ output:
     toc: true
     toc_depth: 2
     number_sections: true
-    extra_dependencies: ["float"]
+    extra_dependencies: ["float", "subfig"]
     latex_engine: xelatex
 fontsize: 11pt
 geometry: margin=1in
@@ -327,19 +327,75 @@ The temporal patterns show dramatic swings, including major spikes in 2016 (+53.
 
 The extreme volatility in certain districts—particularly Oerlikon with individual years showing over 1300% growth—suggests either significant infrastructure changes, measurement methodology shifts, or data quality issues that warrant careful validation before drawing definitive policy conclusions.
 
-![Traffic Growth 2013](images/traffic_growth/traffic_growth_2013.png)
-![Traffic Growth 2014](images/traffic_growth/traffic_growth_2014.png)
-![Traffic Growth 2015](images/traffic_growth/traffic_growth_2015.png)
-![Traffic Growth 2016](images/traffic_growth/traffic_growth_2016.png)
-![Traffic Growth 2017](images/traffic_growth/traffic_growth_2017.png)
-![Traffic Growth 2018](images/traffic_growth/traffic_growth_2018.png)
-![Traffic Growth 2019](images/traffic_growth/traffic_growth_2019.png)
-![Traffic Growth 2020](images/traffic_growth/traffic_growth_2020.png)
-![Traffic Growth 2021](images/traffic_growth/traffic_growth_2021.png)
-![Traffic Growth 2022](images/traffic_growth/traffic_growth_2022.png)
-![Traffic Growth 2023](images/traffic_growth/traffic_growth_2023.png)
-![Traffic Growth 2024](images/traffic_growth/traffic_growth_2024.png)
-![Traffic Growth 2025](images/traffic_growth/traffic_growth_2025.png)
+```{r traffic-131415, echo=FALSE, fig.show="hold", out.width="33%", fig.cap="", fig.subcap=c("2013", "2014", "2015")}
+knitr::include_graphics("images/traffic_growth/traffic_growth_2013.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2014.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2015.png")
+```
+
+```{r traffic-161718, echo=FALSE, fig.show="hold", out.width="33%", fig.cap="", fig.subcap=c("2016", "2017", "2018")}
+knitr::include_graphics("images/traffic_growth/traffic_growth_2016.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2017.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2018.png")
+```
+
+```{r traffic-192021, echo=FALSE, fig.show="hold", out.width="33%", fig.cap="", fig.subcap=c("2019", "2020", "2021")}
+knitr::include_graphics("images/traffic_growth/traffic_growth_2019.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2020.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2021.png")
+```
+
+```{r traffic-222324, echo=FALSE, fig.show="hold", out.width="33%", fig.cap="", fig.subcap=c("2022", "2023", "2024")}
+knitr::include_graphics("images/traffic_growth/traffic_growth_2022.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2023.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2024.png")
+```
+
+```{r traffic-25, echo=FALSE, fig.show="hold", out.width="33%", fig.cap="", fig.subcap=c("2025")}
+knitr::include_graphics("images/traffic_growth/traffic_growth_2025.png")
+```
+
+```{r traffic-all, echo=FALSE, fig.show="hold", out.width="33%", fig.cap="Traffic Growth 2013-2025, left to right, top to bottom"}
+knitr::include_graphics("images/traffic_growth/traffic_growth_2013.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2014.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2015.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2016.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2017.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2018.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2019.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2020.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2021.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2022.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2023.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2024.png")
+knitr::include_graphics("images/traffic_growth/traffic_growth_2025.png")
+```
+
+![2013](images/traffic_growth/traffic_growth_2013.png){width=50%}
+
+![2014](images/traffic_growth/traffic_growth_2014.png){width=50%}
+
+![2015](images/traffic_growth/traffic_growth_2015.png){width=50%}
+
+![2016](images/traffic_growth/traffic_growth_2016.png){width=50%}
+
+![2017](images/traffic_growth/traffic_growth_2017.png){width=50%}
+
+![2018](images/traffic_growth/traffic_growth_2018.png){width=50%}
+
+![2019](images/traffic_growth/traffic_growth_2019.png){width=50%}
+
+![2020](images/traffic_growth/traffic_growth_2020.png){width=50%}
+
+![2021](images/traffic_growth/traffic_growth_2021.png){width=50%}
+
+![2022](images/traffic_growth/traffic_growth_2022.png){width=50%}
+
+![2023](images/traffic_growth/traffic_growth_2023.png){width=50%}
+
+![2024](images/traffic_growth/traffic_growth_2024.png){width=50%}
+
+![2025](images/traffic_growth/traffic_growth_2025.png){width=50%}
 
 ## Population Growth
 
@@ -351,19 +407,19 @@ Geographically, population growth concentrated in developing peripheral and wate
 
 Unlike the extreme district-level volatility in traffic patterns, population changes remained relatively predictable and policy-responsive, with the most volatile district (Escher Wyss) still showing a standard deviation of only 7.37%—far more manageable than the traffic volatility observed in comparable districts—indicating that urban planners have successfully managed demographic growth even as transportation infrastructure has struggled to keep pace.
 
-![Population Growth 2013](images/population_growth/population_growth_2013.png)
-![Population Growth 2014](images/population_growth/population_growth_2014.png)
-![Population Growth 2015](images/population_growth/population_growth_2015.png)
-![Population Growth 2016](images/population_growth/population_growth_2016.png)
-![Population Growth 2017](images/population_growth/population_growth_2017.png)
-![Population Growth 2018](images/population_growth/population_growth_2018.png)
-![Population Growth 2019](images/population_growth/population_growth_2019.png)
-![Population Growth 2020](images/population_growth/population_growth_2020.png)
-![Population Growth 2021](images/population_growth/population_growth_2021.png)
-![Population Growth 2022](images/population_growth/population_growth_2022.png)
-![Population Growth 2023](images/population_growth/population_growth_2023.png)
-![Population Growth 2024](images/population_growth/population_growth_2024.png)
-![Population Growth 2025](images/population_growth/population_growth_2025.png)
+![Population Growth 2013](images/population_growth/population_growth_2013.png){width=50%}
+![Population Growth 2014](images/population_growth/population_growth_2014.png){width=50%}
+![Population Growth 2015](images/population_growth/population_growth_2015.png){width=50%}
+![Population Growth 2016](images/population_growth/population_growth_2016.png){width=50%}
+![Population Growth 2017](images/population_growth/population_growth_2017.png){width=50%}
+![Population Growth 2018](images/population_growth/population_growth_2018.png){width=50%}
+![Population Growth 2019](images/population_growth/population_growth_2019.png){width=50%}
+![Population Growth 2020](images/population_growth/population_growth_2020.png){width=50%}
+![Population Growth 2021](images/population_growth/population_growth_2021.png){width=50%}
+![Population Growth 2022](images/population_growth/population_growth_2022.png){width=50%}
+![Population Growth 2023](images/population_growth/population_growth_2023.png){width=50%}
+![Population Growth 2024](images/population_growth/population_growth_2024.png){width=50%}
+![Population Growth 2025](images/population_growth/population_growth_2025.png){width=50%}
 
 ## Stress Index
 
@@ -377,19 +433,19 @@ Geographically, stress concentrates in a handful of transformation zones—Oerli
 
 The distribution analysis reveals that 59.4% of district-years show negative stress (traffic growing slower than population), but the 40.6% showing positive stress includes a dangerous 13.6% with moderate-to-severe stress levels (>10%), and these crisis events disproportionately drive policy concerns, suggesting that Zurich's transportation challenge is not uniform congestion but rather managing extreme volatility and preventing catastrophic stress spikes in vulnerable districts undergoing rapid transformation.
 
-![Stress Index 2013](images/stress_index/stress_index_2013.png)
-![Stress Index 2014](images/stress_index/stress_index_2014.png)
-![Stress Index 2015](images/stress_index/stress_index_2015.png)
-![Stress Index 2016](images/stress_index/stress_index_2016.png)
-![Stress Index 2017](images/stress_index/stress_index_2017.png)
-![Stress Index 2018](images/stress_index/stress_index_2018.png)
-![Stress Index 2019](images/stress_index/stress_index_2019.png)
-![Stress Index 2020](images/stress_index/stress_index_2020.png)
-![Stress Index 2021](images/stress_index/stress_index_2021.png)
-![Stress Index 2022](images/stress_index/stress_index_2022.png)
-![Stress Index 2023](images/stress_index/stress_index_2023.png)
-![Stress Index 2024](images/stress_index/stress_index_2024.png)
-![Stress Index 2025](images/stress_index/stress_index_2025.png)
+![Stress Index 2013](images/stress_index/stress_index_2013.png){width=50%}
+![Stress Index 2014](images/stress_index/stress_index_2014.png){width=50%}
+![Stress Index 2015](images/stress_index/stress_index_2015.png){width=50%}
+![Stress Index 2016](images/stress_index/stress_index_2016.png){width=50%}
+![Stress Index 2017](images/stress_index/stress_index_2017.png){width=50%}
+![Stress Index 2018](images/stress_index/stress_index_2018.png){width=50%}
+![Stress Index 2019](images/stress_index/stress_index_2019.png){width=50%}
+![Stress Index 2020](images/stress_index/stress_index_2020.png){width=50%}
+![Stress Index 2021](images/stress_index/stress_index_2021.png){width=50%}
+![Stress Index 2022](images/stress_index/stress_index_2022.png){width=50%}
+![Stress Index 2023](images/stress_index/stress_index_2023.png){width=50%}
+![Stress Index 2024](images/stress_index/stress_index_2024.png){width=50%}
+![Stress Index 2025](images/stress_index/stress_index_2025.png){width=50%}
 
 # conclusion (mohammed)
 
