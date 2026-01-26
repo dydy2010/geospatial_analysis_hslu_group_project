@@ -1,11 +1,11 @@
 ---
 title: "Geospatial Data Analysis for Smart Communities"
-subtitle: "Urban Infrastructure Stress Analysis: Mapping Traffic Population Dynamics in Zurich (20212-2025)"
+subtitle: "Urban Infrastructure Stress Analysis: Mapping Traffic Population Dynamics in Zurich (2012-2025)"
 author: |
   Mohammed Biya \textit{(mohammed.biya@stud.hslu.ch)}  
   Omar Zeroual \textit{(omar.zeroual@stud.hslu.ch)}  
-  Dongyuan Gao \textit{(@stud.hslu.ch)}  
-  Pun Sabin \textit{(@stud.hslu.ch)}  
+  Dongyuan Gao \textit{(dongyuan.gao@stud.hslu.ch)}  
+  Pun Sabin \textit{(sabin.pun@stud.hslu.ch)}  
   \vspace{0.3cm}  
   \small GitHub: \url{https://github.com/dydy2010/geospatial_analysis_hslu_group_project}
 date: "`r format(Sys.Date(), '%Y-%m-%d')`"
@@ -61,13 +61,13 @@ Source: https://data.stadt-zuerich.ch/dataset/ktzh_stadtkreise_und_quartiere_zue
 
 # Tools & Technologies
 
-We intent to employ a Python-based geospatial analysis workflow for the project:
+We employed a Python-based geospatial analysis workflow for the project:
 
 Data Processing: pandas for tabular data manipulation; GeoPandas for spatial operations and coordinate system transformations (Swiss LV95 to WGS84)
 
 Analysis: scikit-learn for clustering algorithms; NumPy and SciPy for statistical computations
 
-Visualization: Tableau, Plotly or Streamlit for interactive dashboards; Folium for web-based mapping; Matplotlib/Seaborn for static visualizations
+Visualization: Tableau
 
 Geospatial Data: Zurich district and quarter boundary files (GeoJSON format) from opendata.swiss
 
@@ -158,21 +158,17 @@ These manual adjustments were essential to achieve a **fully joinable** set of s
 
 The cleaned quarter dataset provides the **geographic reference layer** used to integrate **traffic measurements** with **demographic information**.
 
-# Data Preparation & Cleaning
-
-## 2.1 Traffic Data
-
-## 2. Data Processing and Methodology
+# Data Processing and Methodology
 
 This section describes the data processing pipeline and analytical methodology used to construct the Stress Index, which captures the relationship between population growth and traffic dynamics across Zurich’s statistical quarters.
 
 ---
 
-### 2.1 Traffic Data Processing
+## Traffic Data Processing
 
 The raw traffic dataset provided by the City of Zurich consisted of approximately **3.7 GB** of data with over **20 million hourly observations** from permanent traffic counting stations.
 
-#### 2.1.1 Data Reduction and Cleaning
+### Data Reduction and Cleaning
 
 To ensure computational feasibility and analytical relevance, the following preprocessing steps were applied:
 
@@ -181,25 +177,25 @@ To ensure computational feasibility and analytical relevance, the following prep
 - **Missing values**: Rows containing missing or invalid entries were removed.
 - **Duplicate removal**: Duplicate observations were identified and dropped to avoid double counting.
 
-#### 2.1.2 Coordinate Reference System Transformation
+### Coordinate Reference System Transformation
 
 Traffic measurement sites were originally recorded in the Swiss coordinate system **LV95 (EPSG:2056)**.
 For compatibility with spatial analysis and visualization tools, coordinates were transformed to **WGS84 (latitude/longitude)**.
 
 ---
 
-### 2.2 Population Data Processing
+## Population Data Processing
 
 The population dataset contained demographic breakdowns by age group, sex, and nationality at the quarter level.
 
-#### 2.2.1 Aggregation
+### Aggregation
 
 To derive the total resident population per quarter and year:
 
 - All demographic subgroups were **summed** to compute the **total population**
 - Aggregation was performed for each **statistical quarter × year** combination
 
-#### 2.2.2 Annual Snapshot Selection
+### Annual Snapshot Selection
 
 To ensure temporal consistency and avoid intra-year duplication:
 
@@ -208,7 +204,7 @@ To ensure temporal consistency and avoid intra-year duplication:
 
 ---
 
-### 2.3 Geospatial Mapping of Traffic Sites to Quarters
+## Geospatial Mapping of Traffic Sites to Quarters
 
 To link traffic measurements to administrative units, a spatial join was performed using Zurich’s statistical quarter boundaries.
 
@@ -224,9 +220,9 @@ This step enables aggregation of traffic counts at the quarter level.
 
 ---
 
-### 2.4 Construction of the Stress Index
+## Construction of the Stress Index
 
-#### 2.4.1 Temporal Aggregation
+### Temporal Aggregation
 
 - **Traffic data**: Hourly vehicle counts were aggregated to **annual totals per quarter**
 - **Population data**: Annual totals were already defined via January snapshots
@@ -235,7 +231,7 @@ The analysis focuses on the period **2012–2025**, corresponding to the availab
 
 ---
 
-#### 2.4.2 Growth Rate Computation
+### Growth Rate Computation
 
 For each quarter, year-over-year percentage growth rates were computed.
 
@@ -261,7 +257,7 @@ Growth rates are undefined for the **first observed year** of each quarter due t
 
 ---
 
-#### 2.4.3 Stress Index Definition
+### Stress Index Definition
 
 The **Stress Index** measures the imbalance between mobility demand and residential growth and is defined as:
 
@@ -276,7 +272,7 @@ $$
 
 ---
 
-### 2.5 Classification of Quarters
+## Classification of Quarters
 
 Based on the Stress Index, quarters were categorized to support interpretation:
 
@@ -288,7 +284,7 @@ Based on the Stress Index, quarters were categorized to support interpretation:
 
 ---
 
-### 2.6 Final Dataset
+## Final Dataset
 
 The final analytical dataset is exported as:
 
@@ -310,14 +306,14 @@ This dataset is optimized for downstream visualization and analysis in **Tableau
 
 ---
 
-### 2.7 Methodological Considerations
+## Methodological Considerations
 
 - Extreme growth values (e.g. −100% or large positive rates) can occur when traffic volumes drop sharply or recover from low baselines
 - Such values reflect real-world volatility (e.g. construction, sensor outages, exceptional events) and are retained as part of the analysis
 - The Stress Index is intended as an **exploratory indicator** rather than a causal measure
 
 
-# Results (Omar)
+# Results
 
 ## Traffic Growth
 
@@ -391,8 +387,36 @@ The distribution analysis reveals that 59.4% of district-years show negative str
 ![Stress Index 2024](images/stress_index/stress_index_2024.png)
 ![Stress Index 2025](images/stress_index/stress_index_2025.png)
 
-# conclusion (mohammed)
+# Conclusion
 
-# Appendix
+## Findings
 
+This project analyzed the relationship between traffic growth and population growth across Zurich's quarters from 2012 to 2025. The main findings are:
 
+**Traffic is more volatile than population.** While population grew steadily at around 1.1% per year, traffic volumes showed extreme swings. Some districts had years with over 100% traffic growth, followed by sharp declines. This makes traffic harder to predict and plan for.
+
+**Most quarters are actually improving.** The median stress index of -2.14% means that in a typical year, population growth slightly outpaces traffic growth. About 59% of all district-year observations showed negative stress, meaning traffic is growing slower than population in most cases.
+
+**A few problem areas drive the overall concern.** Districts like Oerlikon, Saatlen, Albisrieden, and Langstrasse showed very high stress values. These are transformation zones where new infrastructure or development created sudden traffic spikes. Oerlikon had an average stress of +139%, mainly due to one extreme year (2016) when traffic jumped over 1300%.
+
+**Central districts are doing well.** Established areas like City, Escher Wyss, and Wollishofen consistently showed negative stress. This suggests that pedestrianization, public transport, and traffic management policies are working in these zones.
+
+**COVID-19 provided temporary relief.** The year 2020 showed a clear dip in traffic growth across all districts, resulting in lower stress levels. However, traffic rebounded in 2021-2024.
+
+## Limitations
+
+This analysis has several limitations that should be considered when interpreting the results:
+
+**Missing quarters.** Five out of 35 quarters (Oberstrass, Alt-Wiedikon, Hirslanden, Gewerbeschule, and one unknown) have no traffic sensor data. This means about 14% of Zurich cannot be analyzed with our method.
+
+**Data quality issues.** Some traffic measurements show extreme values that are likely due to sensor problems rather than actual traffic changes. For example, Friesenberg 2017 recorded zero traffic, creating an undefined growth rate. The following year then shows "infinite" growth. These anomalies affect the averages.
+
+**Sensor installation effects.** When new sensors are installed, traffic appears to increase dramatically overnight. The 1300% spike in Oerlikon (2016) is likely due to new sensors, not actual traffic changes. We cannot always distinguish real growth from measurement changes.
+
+**Traffic volume is not congestion.** Our data counts the number of vehicles passing a sensor, not how long they are stuck in traffic. A road with high volume but good flow would look the same as a congested road in our data.
+
+**Population snapshots are from January only.** We used January population figures for each year to avoid double-counting. This means seasonal population changes (students, tourists) are not captured.
+
+**Stress Index is exploratory.** The classification thresholds (more than +5% for Commuter Hub, less than -5% for Residential Zone) are interpretive choices, not statistically derived cutoffs. Different thresholds would change the classification of some quarters.
+
+Despite these limitations, the Stress Index provides a useful first look at which areas of Zurich face the biggest gap between population and traffic dynamics. Future work could incorporate congestion data, public transport usage, and more granular time-of-day analysis.
