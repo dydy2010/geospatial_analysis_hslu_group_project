@@ -431,3 +431,14 @@ This analysis has several limitations that should be considered when interpretin
 **Lack of local context.** Our team is not from Zurich, so we lack the local knowledge that would help interpret some patterns. For example, understanding which streets had construction projects, which areas saw new developments, or which neighborhoods changed their traffic policies would add valuable context. A local urban planner would likely be able to explain many of the spikes and drops we observed.
 
 Despite these limitations, the Stress Index provides a useful first look at which areas of Zurich face the biggest gap between population and traffic dynamics. Future work could incorporate congestion data, public transport usage, and more granular time-of-day analysis.
+
+## Learnings
+
+This project deepened our skills in geospatial data analytics for urban planning by integrating Zurich’s open datasets on traffic, population, and administrative boundaries into a single workflow. 
+We learned to clean and aggregate large traffic time series, transform coordinates (LV95 → WGS84), and use spatial joins to link traffic counting sites to Zurich’s statistical quarters. 
+Finally, we strengthened our ability to create policy-relevant KPIs, especially the Stress Index (traffic growth vs. population growth), and to produce reproducible outputs ready for visualization and reporting.
+
+# Generative AI
+
+Generative AI tools (including ChatGPT) supported our workflow by helping with coding, debugging, and exploring analysis approaches more efficiently. We used AI to speed up repetitive tasks (e.g., cleaning steps, feature ideas, and plotting logic), while keeping the final implementation under our control. 
+To ensure reliability, we treated AI outputs as suggestions rather than ground truth: all generated code and conclusions were reviewed step-by-step, tested on our data, and validated to avoid errors propagating through the pipeline.
