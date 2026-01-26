@@ -397,7 +397,7 @@ This project analyzed the relationship between traffic growth and population gro
 
 **Most quarters are actually improving.** The median stress index of -2.14% means that in a typical year, population growth slightly outpaces traffic growth. About 59% of all district-year observations showed negative stress, meaning traffic is growing slower than population in most cases.
 
-**A few problem areas drive the overall concern.** Districts like Oerlikon, Saatlen, Albisrieden, and Langstrasse showed very high stress values. These are transformation zones where new infrastructure or development created sudden traffic spikes. Oerlikon had an average stress of +139%, mainly due to one extreme year (2016) when traffic jumped over 1300%.
+**A few problem areas drive the overall concern.** Districts like Oerlikon, Saatlen, Albisrieden, and Langstrasse showed very high stress values. These are transformation zones where new infrastructure or development created sudden traffic spikes. Oerlikon had an average stress of +139%, mainly due to one extreme year (2016) when traffic jumped over 1300%. This coincides with the completion of the Oerlikon Railway Station expansion as part of the Zürich Durchmesserlinie project. The station was expanded from six to eight tracks (Gleis 7 and 8 added) in late 2016. The Weinbergtunnel now connects Oerlikon directly to Zürich HB, and since December 2015, eleven S-Bahn lines serve the station. The expansion was so extensive that the historic MFO administration building had to be moved 60 meters westward in May 2012 to make room for the new tracks (Quelle: Wikipedia, https://de.wikipedia.org/wiki/Bahnhof_Zürich_Oerlikon).
 
 **Central districts are doing well.** Established areas like City, Escher Wyss, and Wollishofen consistently showed negative stress. This suggests that pedestrianization, public transport, and traffic management policies are working in these zones.
 
@@ -418,5 +418,7 @@ This analysis has several limitations that should be considered when interpretin
 **Population snapshots are from January only.** We used January population figures for each year to avoid double-counting. This means seasonal population changes (students, tourists) are not captured.
 
 **Stress Index is exploratory.** The classification thresholds (more than +5% for Commuter Hub, less than -5% for Residential Zone) are interpretive choices, not statistically derived cutoffs. Different thresholds would change the classification of some quarters.
+
+**Lack of local context.** Our team is not from Zurich, so we lack the local knowledge that would help interpret some patterns. For example, understanding which streets had construction projects, which areas saw new developments, or which neighborhoods changed their traffic policies would add valuable context. A local urban planner would likely be able to explain many of the spikes and drops we observed.
 
 Despite these limitations, the Stress Index provides a useful first look at which areas of Zurich face the biggest gap between population and traffic dynamics. Future work could incorporate congestion data, public transport usage, and more granular time-of-day analysis.
