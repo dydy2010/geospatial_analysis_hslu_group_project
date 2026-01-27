@@ -9,19 +9,18 @@ author: |
   \vspace{0.3cm}  
   \small GitHub: \url{https://github.com/dydy2010/geospatial_analysis_hslu_group_project}
 date: "`r format(Sys.Date(), '%Y-%m-%d')`"
-output_file: "GEO_Project.pdf"
+output_file: "GEO_Project_Short.pdf"
 output:
   pdf_document:
-    toc: true
-    toc_depth: 1
+    toc: false
+    toc_depth: 2
     number_sections: true
     extra_dependencies: ["float", "subfig"]
     latex_engine: xelatex
-fontsize: 11pt
-geometry: margin=1in
-knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project.pdf") })
+fontsize: 10pt
+geometry: margin=0.6in
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project_Short.pdf") })
 ---
-\newpage
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -30,24 +29,34 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction & Context
 
-Zurich has experienced steady population growth between 2012 and 2025, while its road network has remained largely unchanged. This growing mismatch increases pressure on key roads and intersections, especially during peak hours, affecting congestion, safety, and overall network efficiency. 
+Zurich, Switzerland’s largest city and a major European economic hub, is experiencing sustained **urbanization pressure** that increasingly tests the capacity and resilience of its transport infrastructure. Between **2012 and 2025**, the city’s **population has continued to grow**, while the **road network has remained largely stable**. At the same time, **commuting patterns and mobility behaviors evolve**, concentrating demand on key **arterial roads** and **intersections**, especially during **peak hours**. This mismatch between growing demand and limited physical expansion contributes to **traffic congestion**, with downstream impacts on **travel time reliability**, **road safety**, **air quality**, and overall **network performance**.
 
-GEO_Project
+For urban planning authorities, managing these challenges requires more than reacting to isolated bottlenecks. Decisions about **where to prioritize infrastructure investments**, **how to optimize traffic signal strategies**, and **which districts may require redesign or alternative mobility solutions** depend on a clear, data-driven understanding of how traffic behaves over time and across space. In particular, planners need to identify not only where volumes are high, but where **growth trends**, **directional imbalances**, and **recurring peak-demand patterns** signal structural stress on the network.
 
-This project uses Zurich Open Data and geospatial analysis to link traffic counts with population change at the quarter level. The main output is a Stress Index (Traffic Growth − Population Growth) to highlight where infrastructure pressure is rising fastest, supported by map-ready outputs for planning and visualization.
+This project, *Urban Infrastructure Stress Analysis: Mapping Traffic Population Dynamics in Zurich (2012–2025)*, contributes to that goal by transforming raw traffic and population data into **actionable insights** for evidence-based urban planning. Using **geospatial data analytics**, the study links demographic dynamics with observed traffic volumes to highlight areas where infrastructure pressure is increasing most rapidly. A core contribution is the development of interpretable **key performance indicators (KPIs)**—including a district-level **Stress Index** that compares **population growth rates** to **traffic volume growth rates**—to support prioritization and long-term planning.
+
+Beyond the stress index, the project examines **temporal traffic patterns** at multiple scales (**hourly, daily, and seasonal**) to detect peak demand periods and usage trends, and applies **clustering methods** to group counting sites by traffic profiles, revealing different “mobility zone” types across Zurich. Finally, results are communicated through **interactive geospatial visualizations and dashboards**, designed to help stakeholders explore patterns quickly and support planning discussions.
+
+Overall, the work aims to bridge the gap between complex datasets and real planning needs: turning measurements into a coherent picture of **where**, **when**, and **how** Zurich’s transport infrastructure is under growing stress—while also serving as a practical learning application of geospatial and analytical methods.
 
 # Data sources
 
-We use **three datasets** from the **Zurich Open Data Portal**:
+We use three datasets, all retrieved from the Zurich Open Data Portal (Open Data Zürich).
 
-- **Traffic counts (MIV), hourly (2012–2025):** Hourly vehicle counts from multiple counting sites across Zurich.  
-  Source: https://data.stadt-zuerich.ch/dataset/sid_dav_verkehrszaehlung_miv_od2031
+Motorized individual traffic (MIV) counts — hourly values (2012–2025)
+Dataset provides hourly traffic measurements at multiple counting sites across the City of Zurich, available since 2012 (delivered daily, with hourly values per counting site).
 
-- **Population by quarter (monthly, with demographics):** Population stock at quarter level, split by attributes such as sex, age group, and origin.  
-  Source: https://data.stadt-zuerich.ch/dataset/bev_monat_bestand_quartier_geschl_ag_herkunft_od3250
+Source: https://data.stadt-zuerich.ch/dataset/sid_dav_verkehrszaehlung_miv_od2031
 
-- **Administrative boundaries (districts & quarters):** Shapefiles defining official district and quarter boundaries, used for mapping and spatial joins.  
-  Source: https://data.stadt-zuerich.ch/dataset/ktzh_stadtkreise_und_quartiere_zuerich_und_winterthur__ogd_
+Population statistics by quarter — monthly stock with demographic attributes
+Dataset provides population counts at the quarter (Stadtquartier) level, broken down by demographic dimensions (e.g., sex, age group, origin), enabling fine-grained spatial comparisons and trend analysis.
+
+Source: https://data.stadt-zuerich.ch/dataset/bev_monat_bestand_quartier_geschl_ag_herkunft_od3250
+
+Administrative boundaries (districts & quarters) — shapefiles / geodata
+Geospatial boundary dataset defining the official layout of Zurich’s districts (Kreise) and statistical quarters, used for spatial joins, aggregation, and mapping.
+
+Source: https://data.stadt-zuerich.ch/dataset/ktzh_stadtkreise_und_quartiere_zuerich_und_winterthur__ogd_
 
 # Tools & Technologies
 
@@ -313,22 +322,13 @@ The temporal patterns show dramatic swings, including major spikes in 2016 (+53.
 
 The extreme volatility in certain districts—particularly Oerlikon with individual years showing over 1300% growth—suggests either significant infrastructure changes, measurement methodology shifts, or data quality issues that warrant careful validation before drawing definitive policy conclusions.
 
-### Traffic Growth 2013-2025, left to right, top to bottom
-```{r traffic-all, echo=FALSE, fig.show="hold", out.width="33%"}
+### Traffic Growth: 2013 (Baseline) and 2025 (Current)
+```{r traffic-selected, echo=FALSE, fig.show="hold", out.width="48%"}
 knitr::include_graphics("images/traffic_growth/traffic_growth_2013.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2014.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2015.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2016.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2017.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2018.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2019.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2020.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2021.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2022.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2023.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2024.png")
 knitr::include_graphics("images/traffic_growth/traffic_growth_2025.png")
 ```
+
+*See Appendix A for complete year-by-year traffic growth maps (2013-2025).*
 
 ## Population Growth
 
@@ -340,22 +340,13 @@ Geographically, population growth concentrated in developing peripheral and wate
 
 Unlike the extreme district-level volatility in traffic patterns, population changes remained relatively predictable and policy-responsive, with the most volatile district (Escher Wyss) still showing a standard deviation of only 7.37%—far more manageable than the traffic volatility observed in comparable districts—indicating that urban planners have successfully managed demographic growth even as transportation infrastructure has struggled to keep pace.
 
-### Population Growth 2013-2025, left to right, top to bottom
-```{r population-all, echo=FALSE, fig.show="hold", out.width="33%"}
+### Population Growth: 2013 (Baseline) and 2025 (Current)
+```{r population-selected, echo=FALSE, fig.show="hold", out.width="48%"}
 knitr::include_graphics("images/population_growth/population_growth_2013.png")
-knitr::include_graphics("images/population_growth/population_growth_2014.png")
-knitr::include_graphics("images/population_growth/population_growth_2015.png")
-knitr::include_graphics("images/population_growth/population_growth_2016.png")
-knitr::include_graphics("images/population_growth/population_growth_2017.png")
-knitr::include_graphics("images/population_growth/population_growth_2018.png")
-knitr::include_graphics("images/population_growth/population_growth_2019.png")
-knitr::include_graphics("images/population_growth/population_growth_2020.png")
-knitr::include_graphics("images/population_growth/population_growth_2021.png")
-knitr::include_graphics("images/population_growth/population_growth_2022.png")
-knitr::include_graphics("images/population_growth/population_growth_2023.png")
-knitr::include_graphics("images/population_growth/population_growth_2024.png")
 knitr::include_graphics("images/population_growth/population_growth_2025.png")
 ```
+
+*See Appendix A for complete year-by-year population growth maps (2013-2025).*
 
 ## Stress Index
 
@@ -369,22 +360,13 @@ Geographically, stress concentrates in a handful of transformation zones—Oerli
 
 The distribution analysis reveals that 59.4% of district-years show negative stress (traffic growing slower than population), but the 40.6% showing positive stress includes a dangerous 13.6% with moderate-to-severe stress levels (>10%), and these crisis events disproportionately drive policy concerns, suggesting that Zurich's transportation challenge is not uniform congestion but rather managing extreme volatility and preventing catastrophic stress spikes in vulnerable districts undergoing rapid transformation.
 
-### Stress Index 2013-2025, left to right, top to bottom
-```{r stress-all, echo=FALSE, fig.show="hold", out.width="33%"}
-knitr::include_graphics("images/stress_index/stress_index_2013.png")
-knitr::include_graphics("images/stress_index/stress_index_2014.png")
-knitr::include_graphics("images/stress_index/stress_index_2015.png")
+### Stress Index: 2016 (Spike Year) and 2025 (Current)
+```{r stress-selected, echo=FALSE, fig.show="hold", out.width="48%"}
 knitr::include_graphics("images/stress_index/stress_index_2016.png")
-knitr::include_graphics("images/stress_index/stress_index_2017.png")
-knitr::include_graphics("images/stress_index/stress_index_2018.png")
-knitr::include_graphics("images/stress_index/stress_index_2019.png")
-knitr::include_graphics("images/stress_index/stress_index_2020.png")
-knitr::include_graphics("images/stress_index/stress_index_2021.png")
-knitr::include_graphics("images/stress_index/stress_index_2022.png")
-knitr::include_graphics("images/stress_index/stress_index_2023.png")
-knitr::include_graphics("images/stress_index/stress_index_2024.png")
 knitr::include_graphics("images/stress_index/stress_index_2025.png")
 ```
+
+*See Appendix A for complete year-by-year stress index maps (2013-2025).*
 
 # Conclusion
 
@@ -424,8 +406,11 @@ Despite these limitations, the Stress Index provides a useful first look at whic
 
 ## Learnings
 
-This project improved our geospatial analytics skills by combining Zurich’s traffic, population, and boundary data. We learned to process large time series, convert coordinates (LV95→WGS84), and use spatial joins to link sensors to quarters. We also developed policy-relevant KPIs, including the Stress Index, and produced visualization-ready outputs.
+This project deepened our skills in geospatial data analytics for urban planning by integrating Zurich’s open datasets on traffic, population, and administrative boundaries into a single workflow. 
+We learned to clean and aggregate large traffic time series, transform coordinates (LV95 to WGS84), and use spatial joins to link traffic counting sites to Zurich’s statistical quarters. 
+Finally, we strengthened our ability to create policy-relevant KPIs, especially the Stress Index (traffic growth vs. population growth), and to produce reproducible outputs ready for visualization and reporting.
 
 # Generative AI
 
-Generative AI tools (including ChatGPT) helped speed up coding, debugging, and routine tasks (cleaning, feature ideas, plotting). We treated outputs as suggestions and tested/validated everything before using it in the final analysis.
+Generative AI tools (including ChatGPT) supported our workflow by helping with coding, debugging, and exploring analysis approaches more efficiently. We used AI to speed up repetitive tasks (e.g., cleaning steps, feature ideas, and plotting logic), while keeping the final implementation under our control. 
+To ensure reliability, we treated AI outputs as suggestions rather than ground truth: all generated code and conclusions were reviewed step-by-step, tested on our data, and validated to avoid errors propagating through the pipeline.
