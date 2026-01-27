@@ -9,24 +9,23 @@ author: |
   \vspace{0.3cm}  
   \small GitHub: \url{https://github.com/dydy2010/geospatial_analysis_hslu_group_project}
 date: "`r format(Sys.Date(), '%Y-%m-%d')`"
-output_file: "GEO_Project.pdf"
+output_file: "GEO_Project_Short.pdf"
 output:
   pdf_document:
-    toc: true
+    toc: false
     toc_depth: 2
     number_sections: true
     extra_dependencies: ["float", "subfig"]
     latex_engine: xelatex
-fontsize: 11pt
-geometry: margin=1in
-knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project.pdf") })
+fontsize: 10pt
+geometry: margin=0.6in
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project_Short.pdf") })
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 #https://github.com/dydy2010/geospatial_analysis_hslu_group_project.git
 ```
-\newpage
 
 # Introduction & Context
 
@@ -323,22 +322,13 @@ The temporal patterns show dramatic swings, including major spikes in 2016 (+53.
 
 The extreme volatility in certain districts—particularly Oerlikon with individual years showing over 1300% growth—suggests either significant infrastructure changes, measurement methodology shifts, or data quality issues that warrant careful validation before drawing definitive policy conclusions.
 
-### Traffic Growth 2013-2025, left to right, top to bottom
-```{r traffic-all, echo=FALSE, fig.show="hold", out.width="33%"}
+### Traffic Growth: 2013 (Baseline) and 2025 (Current)
+```{r traffic-selected, echo=FALSE, fig.show="hold", out.width="48%"}
 knitr::include_graphics("images/traffic_growth/traffic_growth_2013.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2014.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2015.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2016.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2017.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2018.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2019.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2020.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2021.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2022.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2023.png")
-knitr::include_graphics("images/traffic_growth/traffic_growth_2024.png")
 knitr::include_graphics("images/traffic_growth/traffic_growth_2025.png")
 ```
+
+*See Appendix A for complete year-by-year traffic growth maps (2013-2025).*
 
 ## Population Growth
 
@@ -350,22 +340,13 @@ Geographically, population growth concentrated in developing peripheral and wate
 
 Unlike the extreme district-level volatility in traffic patterns, population changes remained relatively predictable and policy-responsive, with the most volatile district (Escher Wyss) still showing a standard deviation of only 7.37%—far more manageable than the traffic volatility observed in comparable districts—indicating that urban planners have successfully managed demographic growth even as transportation infrastructure has struggled to keep pace.
 
-### Population Growth 2013-2025, left to right, top to bottom
-```{r population-all, echo=FALSE, fig.show="hold", out.width="33%"}
+### Population Growth: 2013 (Baseline) and 2025 (Current)
+```{r population-selected, echo=FALSE, fig.show="hold", out.width="48%"}
 knitr::include_graphics("images/population_growth/population_growth_2013.png")
-knitr::include_graphics("images/population_growth/population_growth_2014.png")
-knitr::include_graphics("images/population_growth/population_growth_2015.png")
-knitr::include_graphics("images/population_growth/population_growth_2016.png")
-knitr::include_graphics("images/population_growth/population_growth_2017.png")
-knitr::include_graphics("images/population_growth/population_growth_2018.png")
-knitr::include_graphics("images/population_growth/population_growth_2019.png")
-knitr::include_graphics("images/population_growth/population_growth_2020.png")
-knitr::include_graphics("images/population_growth/population_growth_2021.png")
-knitr::include_graphics("images/population_growth/population_growth_2022.png")
-knitr::include_graphics("images/population_growth/population_growth_2023.png")
-knitr::include_graphics("images/population_growth/population_growth_2024.png")
 knitr::include_graphics("images/population_growth/population_growth_2025.png")
 ```
+
+*See Appendix A for complete year-by-year population growth maps (2013-2025).*
 
 ## Stress Index
 
@@ -379,22 +360,13 @@ Geographically, stress concentrates in a handful of transformation zones—Oerli
 
 The distribution analysis reveals that 59.4% of district-years show negative stress (traffic growing slower than population), but the 40.6% showing positive stress includes a dangerous 13.6% with moderate-to-severe stress levels (>10%), and these crisis events disproportionately drive policy concerns, suggesting that Zurich's transportation challenge is not uniform congestion but rather managing extreme volatility and preventing catastrophic stress spikes in vulnerable districts undergoing rapid transformation.
 
-### Stress Index 2013-2025, left to right, top to bottom
-```{r stress-all, echo=FALSE, fig.show="hold", out.width="33%"}
-knitr::include_graphics("images/stress_index/stress_index_2013.png")
-knitr::include_graphics("images/stress_index/stress_index_2014.png")
-knitr::include_graphics("images/stress_index/stress_index_2015.png")
+### Stress Index: 2016 (Spike Year) and 2025 (Current)
+```{r stress-selected, echo=FALSE, fig.show="hold", out.width="48%"}
 knitr::include_graphics("images/stress_index/stress_index_2016.png")
-knitr::include_graphics("images/stress_index/stress_index_2017.png")
-knitr::include_graphics("images/stress_index/stress_index_2018.png")
-knitr::include_graphics("images/stress_index/stress_index_2019.png")
-knitr::include_graphics("images/stress_index/stress_index_2020.png")
-knitr::include_graphics("images/stress_index/stress_index_2021.png")
-knitr::include_graphics("images/stress_index/stress_index_2022.png")
-knitr::include_graphics("images/stress_index/stress_index_2023.png")
-knitr::include_graphics("images/stress_index/stress_index_2024.png")
 knitr::include_graphics("images/stress_index/stress_index_2025.png")
 ```
+
+*See Appendix A for complete year-by-year stress index maps (2013-2025).*
 
 # Conclusion
 
