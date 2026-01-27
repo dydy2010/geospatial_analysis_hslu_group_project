@@ -30,15 +30,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction & Context
 
-Zurich, Switzerland’s largest city and a major European economic hub, is experiencing sustained **urbanization pressure** that increasingly tests the capacity and resilience of its transport infrastructure. Between **2012 and 2025**, the city’s **population has continued to grow**, while the **road network has remained largely stable**. At the same time, **commuting patterns and mobility behaviors evolve**, concentrating demand on key **arterial roads** and **intersections**, especially during **peak hours**. This mismatch between growing demand and limited physical expansion contributes to **traffic congestion**, with downstream impacts on **travel time reliability**, **road safety**, **air quality**, and overall **network performance**.
+Zurich has experienced steady population growth between 2012 and 2025, while its road network has remained largely unchanged. This growing mismatch increases pressure on key roads and intersections, especially during peak hours, affecting congestion, safety, and overall network efficiency. 
 
-For urban planning authorities, managing these challenges requires more than reacting to isolated bottlenecks. Decisions about **where to prioritize infrastructure investments**, **how to optimize traffic signal strategies**, and **which districts may require redesign or alternative mobility solutions** depend on a clear, data-driven understanding of how traffic behaves over time and across space. In particular, planners need to identify not only where volumes are high, but where **growth trends**, **directional imbalances**, and **recurring peak-demand patterns** signal structural stress on the network.
+GEO_Project
 
-This project, *Urban Infrastructure Stress Analysis: Mapping Traffic Population Dynamics in Zurich (2012–2025)*, contributes to that goal by transforming raw traffic and population data into **actionable insights** for evidence-based urban planning. Using **geospatial data analytics**, the study links demographic dynamics with observed traffic volumes to highlight areas where infrastructure pressure is increasing most rapidly. A core contribution is the development of interpretable **key performance indicators (KPIs)**—including a district-level **Stress Index** that compares **population growth rates** to **traffic volume growth rates**—to support prioritization and long-term planning.
-
-Beyond the stress index, the project examines **temporal traffic patterns** at multiple scales (**hourly, daily, and seasonal**) to detect peak demand periods and usage trends, and applies **clustering methods** to group counting sites by traffic profiles, revealing different “mobility zone” types across Zurich. Finally, results are communicated through **interactive geospatial visualizations and dashboards**, designed to help stakeholders explore patterns quickly and support planning discussions.
-
-Overall, the work aims to bridge the gap between complex datasets and real planning needs: turning measurements into a coherent picture of **where**, **when**, and **how** Zurich’s transport infrastructure is under growing stress—while also serving as a practical learning application of geospatial and analytical methods.
+This project uses Zurich Open Data and geospatial analysis to link traffic counts with population change at the quarter level. The main output is a Stress Index (Traffic Growth − Population Growth) to highlight where infrastructure pressure is rising fastest, supported by map-ready outputs for planning and visualization.
 
 # Data sources
 
