@@ -435,7 +435,7 @@ Despite these limitations, the Stress Index provides a useful first look at whic
 ## Learnings
 
 This project deepened our skills in geospatial data analytics for urban planning by integrating Zurich’s open datasets on traffic, population, and administrative boundaries into a single workflow. 
-We learned to clean and aggregate large traffic time series, transform coordinates (LV95 → WGS84), and use spatial joins to link traffic counting sites to Zurich’s statistical quarters. 
+We learned to clean and aggregate large traffic time series, transform coordinates (LV95 to WGS84), and use spatial joins to link traffic counting sites to Zurich’s statistical quarters. 
 Finally, we strengthened our ability to create policy-relevant KPIs, especially the Stress Index (traffic growth vs. population growth), and to produce reproducible outputs ready for visualization and reporting.
 
 # Generative AI

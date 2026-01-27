@@ -1,0 +1,159 @@
+---
+title: "Appendix: Complete Choropleth Maps"
+subtitle: "Urban Infrastructure Stress Analysis: Zurich (2013-2025)"
+author: "HSLU Geospatial Analysis Team"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 1
+    number_sections: true
+    latex_engine: xelatex
+fontsize: 10pt
+geometry: margin=0.75in
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, out.width = "48%", fig.align = "center")
+```
+
+\newpage
+
+# Traffic Growth Maps (2013-2025)
+
+The following choropleth maps show the year-over-year traffic growth percentage for each Zurich quarter.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2013.png}
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2014.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2015.png}
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2016.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2017.png}
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2018.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2019.png}
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2020.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2021.png}
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2022.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2023.png}
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2024.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/traffic_growth/traffic_growth_2025.png}
+\end{figure}
+
+\newpage
+
+# Population Growth Maps (2013-2025)
+
+The following choropleth maps show the year-over-year population growth percentage for each Zurich quarter.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2013.png}
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2014.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2015.png}
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2016.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2017.png}
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2018.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2019.png}
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2020.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2021.png}
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2022.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2023.png}
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2024.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/population_growth/population_growth_2025.png}
+\end{figure}
+
+\newpage
+
+# Stress Index Maps (2013-2025)
+
+The following choropleth maps show the Stress Index (Traffic Growth % - Population Growth %) for each Zurich quarter.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2013.png}
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2014.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2015.png}
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2016.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2017.png}
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2018.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2019.png}
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2020.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2021.png}
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2022.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2023.png}
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2024.png}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{images/stress_index/stress_index_2025.png}
+\end{figure}
