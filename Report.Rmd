@@ -13,7 +13,7 @@ output_file: "GEO_Project.pdf"
 output:
   pdf_document:
     toc: true
-    toc_depth: 2
+    toc_depth: 1
     number_sections: true
     extra_dependencies: ["float", "subfig"]
     latex_engine: xelatex
@@ -21,12 +21,12 @@ fontsize: 11pt
 geometry: margin=1in
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project.pdf") })
 ---
+\newpage
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 #https://github.com/dydy2010/geospatial_analysis_hslu_group_project.git
 ```
-\newpage
 
 # Introduction & Context
 
@@ -38,22 +38,16 @@ This project uses Zurich Open Data and geospatial analysis to link traffic count
 
 # Data sources
 
-We use three datasets, all retrieved from the Zurich Open Data Portal (Open Data Zürich).
+We use **three datasets** from the **Zurich Open Data Portal**:
 
-Motorized individual traffic (MIV) counts — hourly values (2012–2025)
-Dataset provides hourly traffic measurements at multiple counting sites across the City of Zurich, available since 2012 (delivered daily, with hourly values per counting site).
+- **Traffic counts (MIV), hourly (2012–2025):** Hourly vehicle counts from multiple counting sites across Zurich.  
+  Source: https://data.stadt-zuerich.ch/dataset/sid_dav_verkehrszaehlung_miv_od2031
 
-Source: https://data.stadt-zuerich.ch/dataset/sid_dav_verkehrszaehlung_miv_od2031
+- **Population by quarter (monthly, with demographics):** Population stock at quarter level, split by attributes such as sex, age group, and origin.  
+  Source: https://data.stadt-zuerich.ch/dataset/bev_monat_bestand_quartier_geschl_ag_herkunft_od3250
 
-Population statistics by quarter — monthly stock with demographic attributes
-Dataset provides population counts at the quarter (Stadtquartier) level, broken down by demographic dimensions (e.g., sex, age group, origin), enabling fine-grained spatial comparisons and trend analysis.
-
-Source: https://data.stadt-zuerich.ch/dataset/bev_monat_bestand_quartier_geschl_ag_herkunft_od3250
-
-Administrative boundaries (districts & quarters) — shapefiles / geodata
-Geospatial boundary dataset defining the official layout of Zurich’s districts (Kreise) and statistical quarters, used for spatial joins, aggregation, and mapping.
-
-Source: https://data.stadt-zuerich.ch/dataset/ktzh_stadtkreise_und_quartiere_zuerich_und_winterthur__ogd_
+- **Administrative boundaries (districts & quarters):** Shapefiles defining official district and quarter boundaries, used for mapping and spatial joins.  
+  Source: https://data.stadt-zuerich.ch/dataset/ktzh_stadtkreise_und_quartiere_zuerich_und_winterthur__ogd_
 
 # Tools & Technologies
 
@@ -430,11 +424,8 @@ Despite these limitations, the Stress Index provides a useful first look at whic
 
 ## Learnings
 
-This project deepened our skills in geospatial data analytics for urban planning by integrating Zurich’s open datasets on traffic, population, and administrative boundaries into a single workflow. 
-We learned to clean and aggregate large traffic time series, transform coordinates (LV95 to WGS84), and use spatial joins to link traffic counting sites to Zurich’s statistical quarters. 
-Finally, we strengthened our ability to create policy-relevant KPIs, especially the Stress Index (traffic growth vs. population growth), and to produce reproducible outputs ready for visualization and reporting.
+This project improved our geospatial analytics skills by combining Zurich’s traffic, population, and boundary data. We learned to process large time series, convert coordinates (LV95→WGS84), and use spatial joins to link sensors to quarters. We also developed policy-relevant KPIs, including the Stress Index, and produced visualization-ready outputs.
 
 # Generative AI
 
-Generative AI tools (including ChatGPT) supported our workflow by helping with coding, debugging, and exploring analysis approaches more efficiently. We used AI to speed up repetitive tasks (e.g., cleaning steps, feature ideas, and plotting logic), while keeping the final implementation under our control. 
-To ensure reliability, we treated AI outputs as suggestions rather than ground truth: all generated code and conclusions were reviewed step-by-step, tested on our data, and validated to avoid errors propagating through the pipeline.
+Generative AI tools (including ChatGPT) helped speed up coding, debugging, and routine tasks (cleaning, feature ideas, plotting). We treated outputs as suggestions and tested/validated everything before using it in the final analysis.
