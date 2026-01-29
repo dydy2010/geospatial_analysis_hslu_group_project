@@ -9,7 +9,7 @@ author: |
   \vspace{0.3cm}  
   \small GitHub: \url{https://github.com/dydy2010/geospatial_analysis_hslu_group_project}
 date: "`r format(Sys.Date(), '%Y-%m-%d')`"
-output_file: "GEO_Project.pdf"
+output_file: "GEO_Project_Team3.pdf"
 output:
   pdf_document:
     toc: true
@@ -19,7 +19,7 @@ output:
     latex_engine: xelatex
 fontsize: 11pt
 geometry: margin=0.9in
-knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project.pdf") })
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project_Team3.pdf") })
 ---
 \newpage
 
