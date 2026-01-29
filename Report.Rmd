@@ -18,7 +18,7 @@ output:
     extra_dependencies: ["float", "subfig"]
     latex_engine: xelatex
 fontsize: 11pt
-geometry: margin=1in
+geometry: margin=0.9in
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = "GEO_Project.pdf") })
 ---
 \newpage
@@ -404,23 +404,13 @@ This project analyzed the relationship between traffic growth and population gro
 
 ## Limitations
 
-This analysis has several limitations that should be considered when interpreting the results:
+**Incomplete spatial coverage.** Five out of 35 quarters (Oberstrass, Alt-Wiedikon, Hirslanden, Gewerbeschule, and one unknown) have no traffic sensor data, meaning about 14% of Zurich cannot be analyzed with our method.
 
-**Missing quarters.** Five out of 35 quarters (Oberstrass, Alt-Wiedikon, Hirslanden, Gewerbeschule, and one unknown) have no traffic sensor data. This means about 14% of Zurich cannot be analyzed with our method.
+**Metric limitations.** Our data counts vehicles passing sensors, not congestion levels, so high-volume roads with good flow appear similar to congested ones. Additionally, we used January population snapshots to avoid double-counting, which means seasonal changes (students, tourists) are not captured.
 
-**Data quality issues.** Some traffic measurements show extreme values that are likely due to sensor problems rather than actual traffic changes. For example, Friesenberg 2017 recorded zero traffic, creating an undefined growth rate. The following year then shows "infinite" growth. These anomalies affect the averages.
+**Interpretive constraints.** The Stress Index classification thresholds (+5% for Commuter Hub, -5% for Residential Zone) are interpretive choices, not statistically derived. Our team also lacks local Zurich knowledge, which would help explain patterns like construction projects, new developments, or policy changes that drive the spikes we observed.
 
-**Sensor installation effects.** When new sensors are installed, traffic appears to increase dramatically overnight. The 1300% spike in Oerlikon (2016) is likely due to new sensors, not actual traffic changes. We cannot always distinguish real growth from measurement changes.
-
-**Traffic volume is not congestion.** Our data counts the number of vehicles passing a sensor, not how long they are stuck in traffic. A road with high volume but good flow would look the same as a congested road in our data.
-
-**Population snapshots are from January only.** We used January population figures for each year to avoid double-counting. This means seasonal population changes (students, tourists) are not captured.
-
-**Stress Index is exploratory.** The classification thresholds (more than +5% for Commuter Hub, less than -5% for Residential Zone) are interpretive choices, not statistically derived cutoffs. Different thresholds would change the classification of some quarters.
-
-**Lack of local context.** Our team is not from Zurich, so we lack the local knowledge that would help interpret some patterns. For example, understanding which streets had construction projects, which areas saw new developments, or which neighborhoods changed their traffic policies would add valuable context. A local urban planner would likely be able to explain many of the spikes and drops we observed.
-
-Despite these limitations, the Stress Index provides a useful first look at which areas of Zurich face the biggest gap between population and traffic dynamics. Future work could incorporate congestion data, public transport usage, and more granular time-of-day analysis.
+Despite these limitations, the Stress Index provides a useful first look at which areas of Zurich face the biggest gap between population and traffic dynamics.
 
 ## Learnings
 
